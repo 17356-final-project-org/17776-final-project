@@ -1,6 +1,6 @@
 # 17776-final-project
 
-NOTE: run the following commands in this directory before working on backend
+## NOTE: run the following commands in this directory before working on backend
 ```
 pipenv install
 
