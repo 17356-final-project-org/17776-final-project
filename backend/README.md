@@ -3,6 +3,7 @@
 NOTE: run the following commands in this directory before working on backend
 ```
 pipenv install
+
 pipenv shell
 ```
 
