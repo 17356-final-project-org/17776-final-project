@@ -6,6 +6,10 @@ const cases = document.querySelector(".cases");
 const recovered = document.querySelector(".recovered");
 const deaths = document.querySelector(".deaths");
 const results = document.querySelector(".result-container");
+
+const currenturl = document.querySelector(".currenturl")
+
+
 results.style.display = "none";
 loading.style.display = "none";
 errors.textContent = "";
@@ -13,6 +17,13 @@ errors.textContent = "";
 const form = document.querySelector(".form-data");
 // grab the country name
 const country = document.querySelector(".country-name");
+
+//get current url
+function sendCurrentUrl() {
+  chrome.tabs.getSelected(null, function(tab) {
+    currenturl.textContent = tab.url
+  })
+}
 
 // declare a method to search by country name
 const searchForCountry = async countryName => {
@@ -24,6 +35,9 @@ const searchForCountry = async countryName => {
     cases.textContent = response.data.confirmed.value;
     recovered.textContent = response.data.recovered.value;
     deaths.textContent = response.data.deaths.value;
+
+    sendCurrentUrl()
+
     results.style.display = "block";
   } catch (error) {
     loading.style.display = "none";
