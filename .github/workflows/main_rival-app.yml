@@ -29,13 +29,17 @@ jobs:
     - name: Build using AppService-Build
       uses: azure/appservice-build@v2
       with:
+        source-directory: ./backend
+        output-directory: ./backend-output
         platform: python
         platform-version: '3.8'
+        
 
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
       with:
         app-name: rival-app
+        package: ./backend-output
         slot-name: Production
         publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_84E3B20D1E71404E9CDBA35D664A3C5F }}
 
