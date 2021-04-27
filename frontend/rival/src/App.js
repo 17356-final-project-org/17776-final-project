@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import axios from 'axios';
 
@@ -37,7 +37,13 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          {name}, {oldPrice}, {newPrice}
+          Name: {name}
+        </p>
+        <p>
+          oldPrice: {oldPrice}
+        </p>
+        <p>
+          newPrice: {newPrice}
         </p>
         <a
           className="App-link"
