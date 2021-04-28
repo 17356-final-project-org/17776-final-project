@@ -7,7 +7,11 @@ const recovered = document.querySelector(".recovered");
 const deaths = document.querySelector(".deaths");
 const results = document.querySelector(".result-container");
 
+const rival_api = "https://rival-app.azurewebsites.net/api/item";
 const currenturl = document.querySelector(".currenturl")
+const product_name = document.querySelector(".product_name")
+const original_price = document.querySelector(".original_price")
+const special_price = document.querySelector(".special_price")
 
 
 results.style.display = "none";
@@ -15,6 +19,7 @@ loading.style.display = "none";
 errors.textContent = "";
 // grab the form
 const form = document.querySelector(".form-data");
+
 // grab the country name
 const country = document.querySelector(".country-name");
 
@@ -24,6 +29,30 @@ function sendCurrentUrl() {
     currenturl.textContent = tab.url
   })
 }
+
+// declare a method to search for rival product
+const searchForRival = async request => {
+  loading.style.display = "block";
+  errors.textContent = "";
+  try {
+    const response = await axios.get(`${rival_api}`);
+    loading.style.display = "none";
+    sendCurrentUrl();
+    product_name.textContent = response.data[0].name;
+    original_price.textContent = response.data[0].nominal_price;
+    special_price.textContent = response.data[0].lowest_price;
+    console.log(response)
+    results.style.display = "block";
+  } catch (error) {
+    console.log(error);
+    loading.style.display = "none";
+    results.style.display = "none";
+    errors.textContent = "We have no data for the country you have requested.";
+  }
+};
+
+
+
 
 // declare a method to search by country name
 const searchForCountry = async countryName => {
@@ -37,7 +66,7 @@ const searchForCountry = async countryName => {
     deaths.textContent = response.data.deaths.value;
 
     sendCurrentUrl()
-
+  
     results.style.display = "block";
   } catch (error) {
     loading.style.display = "none";
@@ -49,7 +78,8 @@ const searchForCountry = async countryName => {
 // declare a function to handle form submission
 const handleSubmit = async e => {
   e.preventDefault();
-  searchForCountry(country.value);
+  searchForRival(country.value)
+  // searchForCountry(country.value);
   console.log(country.value);
 };
 
