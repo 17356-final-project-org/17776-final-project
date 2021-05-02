@@ -16,6 +16,14 @@ class ApiResponsesTest(TestCase):
         response = self.client.get("/api/random/")
         self.assertEqual(response.status_code, 404)
 
+    def test_api_slug(self):
+        response = self.client.get("/api/item/adidas soccer ball f50")
+        self.assertEqual(response.status_code, 200)
+
+    def test_api_slug_not_in_database(self):
+        response = self.client.get("/api/item/not here")
+        self.assertEqual(response.status_code, 404)
+
 class ItemTest(TestCase):
 
     @classmethod
