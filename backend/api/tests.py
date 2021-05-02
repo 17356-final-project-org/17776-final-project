@@ -16,18 +16,19 @@ class ApiResponsesTest(TestCase):
         response = self.client.get("/api/random/")
         self.assertEqual(response.status_code, 404)
 
+    
 class ItemTest(TestCase):
 
     @classmethod
     def setUpTestData(s):
-        Item.objects.create(name = "soccer ball", nominal_price = 15,
+        Item.objects.create(name = "adidas soccer ball f50", nominal_price = 15,
                             lowest_price = 12, 
                             item_url = "http://amazon.com")
 
     def test_name(self):
         created_item = Item.objects.get(id = 1)
         item_name = f'{created_item.name}'
-        self.assertEqual(item_name, "soccer ball")
+        self.assertEqual(item_name, "adidas soccer ball f50")
 
     def test_nominal_price(self):
         created_item = Item.objects.get(id = 1)
@@ -40,3 +41,12 @@ class ItemTest(TestCase):
     def test_item_url(self):
         created_item = Item.objects.get(id = 1)
         self.assertEqual(created_item.item_url, "http://amazon.com")
+
+    def test_api_query_look_up(self):
+        response = self.client.get("/api/item/adidas soccer ball")
+        self.assertEqual(response.status_code, 200)
+    
+    def test_api_query_not_in_database(self):
+        response = self.client.get("/api/item/not here")
+        self.assertEqual(response.status_code, 404)
+
