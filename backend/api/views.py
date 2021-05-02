@@ -1,6 +1,7 @@
 from .models import Item
 from rest_framework import generics
 from .serializers import ItemSerializer
+from django.http import Http404
 
 class ListItem(generics.ListAPIView):
     queryset = Item.objects.all()
@@ -12,8 +13,14 @@ class DetailItem(generics.RetrieveAPIView):
     lookup_field = "itemName"
 
     def get_object(self):
-        print(self.kwargs[self.lookup_field])
-        return bestKeywordMatch(self.kwargs[self.lookup_field])
+        best_match = bestKeywordMatch(self.kwargs[self.lookup_field])
+        
+        # front end will check to see if return response is 404 and say we
+        # don't have any products that compete with the requested product
+        if best_match is None:
+            raise Http404
+        else:
+            return best_match
 
 def bestKeywordMatch(queryItem, minMatches=3):
     """
