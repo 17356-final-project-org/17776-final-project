@@ -14,4 +14,3 @@ admin username: admin
 
 admin password: password
 
-serving static files
