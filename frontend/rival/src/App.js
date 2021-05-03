@@ -26,10 +26,10 @@ function App() {
   }
 
   const fetchPricesAndLink = async () => {
-    const res = await axios(``); // TODO: call to back-end with parameter
-    setNewPrice(res.newPrice);
-    setOldPrice(res.oldPrice);
-    setLink(res.link);
+    const res = await axios.get("https://rival-app.azurewebsites.net/api/item"); // TODO: call to back-end with parameter
+    setNewPrice(res.data[0].lowest_price);
+    setOldPrice(res.data[0].nominal_price);
+    setLink(res.data[0].item_url);
   }
 
   return (
