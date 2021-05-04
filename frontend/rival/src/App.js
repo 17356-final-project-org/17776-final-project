@@ -16,17 +16,24 @@ function App() {
   // Get information about current product
 
   const fetchName = async () => {
-    const res = await axios(``); // TODO: call to Amazon with URL
-    setName(res);
+    // get data from html... 
+    setName("result from html");
   }
 
   const fetchCurPrice = async () => {
-    const res = await axios(``); // TODO: call to Amazon with URL
-    setCurPrice(res);
+    // get data from html... 
+    setCurPrice(1);
   }
 
   const fetchPricesAndLink = async () => {
-    const res = await axios.get("https://rival-app.azurewebsites.net/api/item"); // TODO: call to back-end with parameter
+    fetchName();
+    fetchCurPrice();
+    var headers_current = {
+      headers: {"name": name,
+                "cost": curPrice}
+    };   
+    const res = await axios.get("https://rival-app.azurewebsites.net/api/item",headers_current); // TODO: call to back-end with parameter
+    console.log(res);
     setNewPrice(res.data[0].lowest_price);
     setOldPrice(res.data[0].nominal_price);
     setLink(res.data[0].item_url);
@@ -45,6 +52,10 @@ function App() {
         <p>
           newPrice: {newPrice}
         </p>
+        <button onClick={() => fetchPricesAndLink()}>
+        Click me
+        </button>
+
         <a
           className="App-link"
           href={link}
