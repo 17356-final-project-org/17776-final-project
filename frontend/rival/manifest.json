@@ -3,8 +3,16 @@
   "description": "",
   "version": "1.0",
   "manifest_version": 2,
-  "permissions": ["storage"],
   "action": {
     "default_popup": "build/index.html"
-  }
+  },
+  "background": {
+    "persistent": false,
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [{
+      "matches": ["*://amazon.com/*"],
+      "js": ["content.js"]
+  }],
+  "permissions": ["activeTab"]
 }
