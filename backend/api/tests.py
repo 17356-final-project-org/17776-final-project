@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Item
+from django.contrib.auth.models import User
 
 # testing reference: https://docs.djangoproject.com/en/3.2/topics/testing/overview/
 
@@ -20,8 +21,9 @@ class ApiResponsesTest(TestCase):
 class ItemTest(TestCase):
 
     @classmethod
-    def setUpTestData(s):
-        Item.objects.create(name = "adidas soccer ball f50", nominal_price = 15,
+    def setUpTestData(self):
+        user = User.objects.create_user(username='testuser', password='12345')
+        Item.objects.create(seller = user, name = "adidas soccer ball f50", nominal_price = 15,
                             lowest_price = 12, 
                             item_url = "http://amazon.com")
 
