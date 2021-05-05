@@ -1,0 +1,28 @@
+{% extends 'merchantUI/base.html' %}
+
+{% block content %}
+    <div class="upload-item-form login-form-1">
+        <h3>Upload Items</h3>
+        <form method="POST" action="{% url 'itemUpload' %}">
+            {{ form.non_field_errors }}
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.name }}
+            </div>
+            <div class="form-group">
+                {{ form.nominalPrice }}
+            </div>
+            <div class="form-group">
+                {{ form.lowestPrice }}
+            </div>
+            <div class="form-group">
+                {{ form.itemUrl }}
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btnSubmit">Upload Item</button>
+            </div>
+        </form>
+    <a class="logout-link"  href="{% url 'logout' %}">Logout</a>
+    </div>
+{% endblock %}
+

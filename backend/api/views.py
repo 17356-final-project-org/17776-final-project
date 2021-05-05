@@ -29,8 +29,6 @@ def bestKeywordMatch(queryItem, minMatches=3):
     @param queryItem: name of query item
     @param minMatches: minimum number of keyword matches to return a result
     """
-    queryWords = set(queryItem.split(" "))
-
     mostMatches = float("-inf")
     bestMatch = None
     for item in Item.objects.all():
