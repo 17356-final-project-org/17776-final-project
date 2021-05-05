@@ -15,6 +15,10 @@ def merchantLandingPage(request):
 
 
 def registerMerchantAction(request):
+    if request.method == 'GET':
+        return render(request, 'merchantUI/loginOrRegister.html',
+                      {'loginForm': LoginForm(), 'registerForm': RegisterForm()})
+
     if request.method == 'POST':
         # Received register form. Validate and create new user.
         registerForm = RegisterForm(request.POST)
@@ -41,6 +45,10 @@ def registerMerchantAction(request):
 
 
 def loginMerchantAction(request):
+    if request.method == 'GET':
+        return render(request, 'merchantUI/loginOrRegister.html',
+                      {'loginForm': LoginForm(), 'registerForm': RegisterForm()})
+
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if not form.is_valid():
