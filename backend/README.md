@@ -12,5 +12,5 @@ see pipenv reference here for more details:  https://pipenv.pypa.io/en/latest/
 
 admin username: admin
 
-admin password: password
+admin password: uPMnoABD1iv17DgNqMAmiZSDRngEMwi
 
