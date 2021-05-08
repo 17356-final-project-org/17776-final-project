@@ -7,7 +7,7 @@ import './App.css';
 
 function App() {
 
-  const [name, setName] = useState("Name");
+  const [name, setName] = useState("adidas ball soccer");
   const [curPrice, setCurPrice] = useState(0);
   const [newPrice, setNewPrice] = useState(0);
   const [oldPrice, setOldPrice] = useState(0);
@@ -28,15 +28,11 @@ function App() {
   const fetchPricesAndLink = async () => {
     fetchName();
     fetchCurPrice();
-    var headers_current = {
-      headers: {"name": name,
-                "cost": curPrice}
-    };   
-    const res = await axios.get("https://rival-app.azurewebsites.net/api/item",headers_current); // TODO: call to back-end with parameter
+    const res = await axios.get("https://rival-app.azurewebsites.net/api/item/" + name); // TODO: call to back-end with parameter
     console.log(res);
-    setNewPrice(res.data[0].lowest_price);
-    setOldPrice(res.data[0].nominal_price);
-    setLink(res.data[0].item_url);
+    setNewPrice(res.data.lowest_price);
+    setOldPrice(res.data.nominal_price);
+    setLink(res.data.item_url);
   }
 
   return (
