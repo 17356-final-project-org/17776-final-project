@@ -9,5 +9,17 @@
     "browser_action": {
         "default_icon": "logo512.png",
         "default_popup": "popup.html"
-    }
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "*://*.amazon.com/*"
+            ],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "scripts":["background.js"]
+    },
+    "permissions": ["activeTab","storage"]
 }
