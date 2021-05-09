@@ -8,7 +8,7 @@ import './App.css';
 
 function App() {
 
-  const [name, setName] = useState("adidas ball soccer");
+  const [name, setName] = useState("");
   const [curPrice, setCurPrice] = useState(0);
   const [newPrice, setNewPrice] = useState(0);
   const [oldPrice, setOldPrice] = useState(0);
