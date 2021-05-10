@@ -14,3 +14,7 @@ admin username: admin
 
 admin password: uPMnoABD1iv17DgNqMAmiZSDRngEMwi
 
+
+to run tests: python manage.py test
+
+
