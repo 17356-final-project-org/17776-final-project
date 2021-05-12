@@ -47,10 +47,10 @@ def getNumMatchingKeywords(queryName, itemName):
     Returns the number of matching keywords between two names.
     """
     matches = 0
-    queryWords = set(queryName.split(" "))
+    queryWords = set(queryName.lower().split(" "))
 
     for word in itemName.split(" "):
-        if word in queryWords:
+        if word.lower() in queryWords:
             matches += 1
 
     return matches
