@@ -70,7 +70,6 @@ def itemUploadPage(request):
         item_url=form.cleaned_data['itemUrl']
     )
 
-    # TODO(@carlos): The line below fails with the message "table api_item has no column named seller_id", any ideas why?
     newItem.save()
     return redirect(reverse('itemUpload'))
 
@@ -78,5 +77,5 @@ def itemUploadPage(request):
 def logoutAction(request):
     print("Logging user out...")
     logout(request)
-    return render(request, 'merchantUI/loginOrRegister.html',
-                  {'loginForm': LoginForm(), 'registerForm': RegisterForm()})
+    return redirect(reverse('landingPage'))
+
