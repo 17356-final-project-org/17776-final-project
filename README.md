@@ -50,3 +50,4 @@ http://rival-app.azurewebsites.net/
 
 3) Fill in the relevant fields of the item upload form. Note that we currently only support amazon products.
 
+4) Click the upload item button. Your item is now in the data base and can be offered by the Rival extension.
