@@ -4,13 +4,13 @@
 
 0) Install Google Chrome if not already installed
 
-1) Download the zip file that is in this directory
+1) Download the zip file that is in this directory (click here to download: https://github.com/17356-final-project-org/17776-final-project/raw/main/rival_final.zip)
 
 2) Unpack the zip file
 
-3) type the folowing into the chrome search bar: chrome://extensions/
+3) type the following into the chrome search bar: chrome://extensions/
 
-4) click on the top left button labeled "load unpacked"
+4) check that the "Developer mode" toggle at the top right corner is turned on. then click on the top left button labeled "Load unpacked"
 
 5) select the folder that was unpacked in step 2. Note: just click the folder, not any specific file within the folder
 
@@ -28,9 +28,14 @@
 
 2) Click on the pinned Rival extension icon
 
-3) Click on the Search button twice
+3) Click on the "Search Rival Deals" button. 
 
-4) If a competing item with a better price is shown, click on the buy button and you will be redirected. If an item is not found, then Rival did not find a better deal
+4) If a competing item with a better price is shown, click on the buy button and you will be redirected. If an item is not found, then Rival did not find a better deal.
+
+If the following text shows up: "page is still loading please try again", it could mean 2 things:
+a) webpage is still loading, please click the button again once the webpage is fully loaded
+b) you are not on Amazon.com
+c) we could not find a matching deal 
 
 
 
