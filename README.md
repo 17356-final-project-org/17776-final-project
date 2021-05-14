@@ -32,9 +32,12 @@
 
 4) If a competing item with a better price is shown, click on the buy button and you will be redirected. If an item is not found, then Rival did not find a better deal.
 
-If the following text shows up: "page is still loading please try again", it could mean 2 things:
+If the following text shows up: "page is still loading please try again", it could mean 3 things:
+
 a) webpage is still loading, please click the button again once the webpage is fully loaded
+
 b) you are not on Amazon.com
+
 c) we could not find a matching deal 
 
 
