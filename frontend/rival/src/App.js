@@ -89,10 +89,11 @@ function App() {
         >
           Buy
         </a>
-
+        <p>
         <button onClick={() => fetchPricesAndLink()}>
         Search Rival Deals
         </button>
+        </p>
 
 
       </header>
