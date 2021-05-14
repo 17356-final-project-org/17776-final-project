@@ -47,8 +47,10 @@ chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
               chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, 
                 function(domContent){
                   console.log('I received the following DOM content:\n' + domContent);
+                  if (domContent !== undefined)
+                    chrome.runtime.sendMessage({isPinged: true});
                 });
             });
-    }
+      }
     }
   });

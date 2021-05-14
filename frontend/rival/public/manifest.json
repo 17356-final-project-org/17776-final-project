@@ -4,10 +4,10 @@
     "manifest_version": 2,
     "description": "Rival",
     "icons": {
-        "512": "logo512.png"
+        "512": "rival_512.png"
     },
     "browser_action": {
-        "default_icon": "logo512.png",
+        "default_icon": "rival_512.png",
         "default_popup": "popup.html"
     },
     "content_scripts": [

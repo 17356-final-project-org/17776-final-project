@@ -18,11 +18,18 @@ function App() {
 
   const fetchName = async () => {
     // get data from html...
-    chrome.storage.local.get(['product_title'], function(result) {
+    chrome.storage.sync.get(['product_title'], function(result) {
       console.log('product_title retrieved from chrome storage is ' + result.product_title);
-      setName(result.product_title);
+      populate(result.product_title);
     });
-    
+
+    // chrome.storage.sync.get(['product_title','product_price'], function(result) {
+    //   console.log('product_title retrieved from chrome storage is ' + result.product_title);
+    //   console.log('product_price retrieved from chrome storage is ' + result.product_price);
+
+    //   test(result.product_title,result.product_price);
+    // });
+
   }
 
   const fetchCurPrice = async () => {
@@ -30,14 +37,36 @@ function App() {
     setCurPrice(1);
   }
 
+  // const test = async (productName,productPrice) => {
+  const populate = async (productName) => {
+    if (productName !== 'page is still loading please try again')
+    {
+      fetchCurPrice();    
+      const res = await axios.get("https://rival-app.azurewebsites.net/api/item/" + (productName.replace(/[^a-zA-Z0-9 ]/g, "")));
+      console.log(res);
+      // console.log(productPrice)
+      setName(productName);
+      setNewPrice(res.data.lowest_price);
+      setOldPrice(res.data.nominal_price);
+      setLink(res.data.item_url);
+    }
+    else
+    {
+      setName(productName);
+    }
+    
+  }
+
+
   const fetchPricesAndLink = async () => {
     fetchName();
-    fetchCurPrice();
+    /*fetchCurPrice();
     const res = await axios.get("https://rival-app.azurewebsites.net/api/item/" + name);
     console.log(res);
     setNewPrice(res.data.lowest_price);
     setOldPrice(res.data.nominal_price);
-    setLink(res.data.item_url);
+    setLink(res.data.item_url);*/
+    
   }
 
   return (
@@ -48,14 +77,9 @@ function App() {
           Name: {name}
         </p>
         <p>
-          oldPrice: {oldPrice}
+          Sale Price: {newPrice}
         </p>
-        <p>
-          newPrice: {newPrice}
-        </p>
-        <button onClick={() => fetchPricesAndLink()}>
-        Click me
-        </button>
+
 
         <a
           className="App-link"
@@ -65,6 +89,13 @@ function App() {
         >
           Buy
         </a>
+        <p>
+        <button onClick={() => fetchPricesAndLink()}>
+        Search Rival Deals
+        </button>
+        </p>
+
+
       </header>
     </div>
   );
