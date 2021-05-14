@@ -1,6 +1,6 @@
 # Rival
 
-#### Extension Installation Instructions
+### Extension Installation Instructions
 
 0) Install Google Chrome if not already installed
 
@@ -22,7 +22,7 @@
 
 
 
-#### Using Rival Extension
+### Using Rival Extension
 
 1) go to any item on amazon. For example, https://www.amazon.com/Backpack-Charging-Resistant-Business-Computer/dp/B07SVV25GC/ref=sr_1_2?dchild=1&keywords=travel+laptop+backpack&qid=1620948206&sr=8-2
 
@@ -34,7 +34,7 @@
 
 
 
-#### Merchant Creation Instructions
+### Merchant Creation Instructions
 
 1) go to the following link and use the right hand side form to register: 
 
@@ -42,7 +42,7 @@ http://rival-app.azurewebsites.net/
 
 
 
-#### Merchant Item Upload Instructions
+### Merchant Item Upload Instructions
 
 1) go to: http://rival-app.azurewebsites.net/
 
